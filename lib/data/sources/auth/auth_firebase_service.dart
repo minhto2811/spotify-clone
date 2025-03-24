@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:app_spotify/core/configs/constants/app_urls.dart';
 import 'package:app_spotify/data/models/auth/create_user_req.dart';
 import 'package:app_spotify/data/models/auth/signin_user_req.dart';
 import 'package:app_spotify/data/models/auth/user.dart';
@@ -88,7 +87,7 @@ class AuthFirebaseServiceImpl extends AuthFirebaseService {
       ).get();
 
       UserModel userModel = UserModel.fromJson(user.data() !);
-      userModel.imageURL = firebaseAuth.currentUser?.photoURL ?? AppURLs.defaultImage;
+      userModel.imageURL = firebaseAuth.currentUser?.photoURL ?? 'https://cdn-icons-png.flaticon.com/512/10542/10542486.png';
       UserEntity userEntity = userModel.toEntity();
       return Right(userEntity);
     } catch (e) {

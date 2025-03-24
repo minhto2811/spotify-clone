@@ -1,5 +1,4 @@
 import 'package:app_spotify/presentation/auth/pages/signin.dart';
-import 'package:app_spotify/presentation/intro/pages/get_started.dart';
 import 'package:fire_auth_quick/fire_auth_quick.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,7 +10,6 @@ import 'package:app_spotify/presentation/profile/bloc/profile_info_cubit.dart';
 import 'package:app_spotify/presentation/song_player/pages/song_player.dart';
 
 import '../../../common/widgets/favorite_button/favorite_button.dart';
-import '../../../core/configs/constants/app_urls.dart';
 import '../bloc/profile_info_state.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -166,8 +164,9 @@ class ProfilePage extends StatelessWidget {
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(20),
                                         image: DecorationImage(
-                                            image: NetworkImage(
-                                                '${AppURLs.coverFirestorage}${state.favoriteSongs[index].artist} - ${state.favoriteSongs[index].title}.jpg?${AppURLs.mediaAlt}'))),
+                                            image: NetworkImage(state
+                                                .favoriteSongs[index]
+                                                .thumbnailUrl))),
                                   ),
                                   const SizedBox(
                                     width: 10,
